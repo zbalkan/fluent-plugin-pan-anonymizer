@@ -4,8 +4,8 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "fluent-plugin-pan-anonymizer"
-  spec.version       = "0.0.1.1"
-  spec.authors       = ["Hiroaki Sano"]
+  spec.version       = "0.0.2"
+  spec.authors       = ["Hiroaki Sano", "Zafer Balkan"]
   spec.email         = ["hiroaki.sano.9stories@gmail.com"]
 
   spec.summary       = %q{Fluentd filter plugin to anonymize credit card numbers.}
