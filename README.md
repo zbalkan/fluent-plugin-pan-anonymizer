@@ -4,21 +4,18 @@ A Fluent filter plugin to anonymize records which have PAN (Primary Account Numb
 
 Inspired by [fluent-plugin-anonymizer](https://github.com/y-ken/fluent-plugin-anonymizer).
 
-**N.B.:** This fork adds ability to allow Regex capture group usage, so that you can mask partially. The configuration shows how to set first 6 and last 4 numbers available while masking the values in between. See the example below.
-
-# Requirements
+## Requirements
 
 - fluentd: v0.14.x or later
 - Ruby: 2.4 or later
 
-# Installation
+## Installation
 
 ```shell
-fluent-gem install specific_install
-fluent-gem specific_install https://github.com/zbalkan/fluent-plugin-pan-anonymizer.git
+gem install fluent-plugin-pan-anonymizer
 ```
 
-# Configuration
+## Configuration
 
 NOTE: Card numbers in the example don't exist in the world.
 
@@ -54,9 +51,9 @@ NOTE: Card numbers in the example don't exist in the world.
 </match>
 ```
 
-## The result of the example given above
+### The result of the example given above
 
-```
+```syslog
 2018-11-13 22:01:35.074963000 +0900 dummy: {"time":12345678901234567,"subject":"xxxxxx","user_inquiry":"hi, my card number is 9999999999999999 !"}
 2018-11-13 22:01:36.001053000 +0900 dummy: {"time":12345678901234568,"subject":"xxxxxx","user_inquiry":"hello inquiry code is 4567890123456789"}
 2018-11-13 22:01:37.021032000 +0900 dummy: {"time":12345678901234569,"subject":"I am xxxx-xxxx-xxxx-xxxx","user_inquiry":"xxxx-xxxx-xxxx-xxxx is my number"}
@@ -65,8 +62,7 @@ NOTE: Card numbers in the example don't exist in the world.
 
 Card numbers were masked with given configuration except `time` key and `4567890123456789` in "hello inquiry code is 4567890123456789". `4567890123456789` is not a valid card number.
 
-
-## A more complex example
+### A more complex example
 
 This example reads logs of an application called `sample`, masks and saves under `/var/log/masked/` so that you can use the masked version. This example uses `td-agent`.
 
@@ -76,7 +72,7 @@ This example reads logs of an application called `sample`, masks and saves under
   # update the path
   path /var/log/sample.log
   pos_file /var/log/td-agent/sample.log.pos
-  
+
   # Use the source application name as a tag below:
   tag sample
 
@@ -130,6 +126,6 @@ This example reads logs of an application called `sample`, masks and saves under
   </match>
 </label>
 ```
-# License
+## License
 
 Apache License, Version 2.0
